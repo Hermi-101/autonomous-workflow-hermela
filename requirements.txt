@@ -1,0 +1,6 @@
+pandas
+opencv-python
+pillow
+pytesseract
+pyautogui
+pytest
