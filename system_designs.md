@@ -55,7 +55,7 @@ The workflow extraction process uses the `captures` table as the anchor because 
 
 The tables are joined using:
 
-captures.event_id = events.
+captures.event_id = events.id
 
 ## 3. System Architecture
 
@@ -78,6 +78,8 @@ The system consists of four main components.
 
 
 ## 4. Workflow Extraction Methodology
+
+Workflow Schema: Workflows are exported as a JSON array where each object contains metadata (employee_id, persistence scores) and a list of steps. Each step includes app_name, event, url, and a reference to the image_path for visual verification.
 
 The workflow extraction process consists of several steps.
 
@@ -151,28 +153,24 @@ These metrics help identify high-value automation opportunities.
 
 ## 6. Meta-Agent Architecture
 
-The Meta-Agent system is responsible for generating automation agents automatically.
+The Meta-Agent system is an "Agent Builder" responsible for generating standalone automation scripts dynamically without manual coding.
 
 ### Input
+The Meta-Agent parses the `workflow.json` generated in Task 1, specifically prioritizing "High-Value" workflows (those with 2-day or 4-day persistence).
 
-The Meta-Agent receives the extracted workflows from Task 1.
+### Implementation Logic: The Factory Pattern
+The system employs a code-generation factory:
+1. **Parsing:** The builder extracts the sequence of apps, URLs, and events.
+2. **Injection:** Data is injected into a specialized Python template (`templates.py`).
+3. **Serialization:** The resulting string is saved as a new, executable `.py` script in the `generated_agents/` directory.
 
-### Agent Generation Process
+### Mapping Strategy
 
-For each workflow:
+| Workflow Action | Automation Logic | Python Implementation |
+|----------------|------------------|----------------------|
+| URL/Navigate   | Browser Launch   | `webbrowser.open()`  |
+| Click          | Visual Target    | `pyautogui.click()`  |
+| Type           | String Injection | `pyautogui.write()`  |
+| App Switch     | Focus Change     | `time.sleep()` / OS focus |
 
-1. The workflow structure is read.
-2. Each action is mapped to an automation instruction.
-3. A Python script is generated using PyAutoGUI.
-
-
-Example mapping:
-
-| Workflow Action | Automation Command |
-|----------------|-------------------|
-| Click | pyautogui.click() |
-| Type | pyautogui.write() |
-| Copy | pyautogui.hotkey('ctrl','c') |
-| Paste | pyautogui.hotkey('ctrl','v') |
-
-The result is a standalone Python automation agent.
+The result is a suite of **Autonomous Generated Agents** that can be run independently to reproduce the discovered user behavior.
