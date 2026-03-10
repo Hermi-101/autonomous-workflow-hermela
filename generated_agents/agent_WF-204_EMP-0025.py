@@ -1,0 +1,98 @@
+
+import pyautogui
+import time
+import webbrowser
+import os
+
+# Generated Agent for Workflow: WF-204
+# Employee: EMP-0025
+# Pattern: chrome.exe:Custom_CLICK->chrome.exe:Custom_CLICK->brave.exe:Custom_CLICK->brave.exe:Custom_CLICK->brave.exe:Custom_CLICK
+
+
+def run_agent():
+    print(f"--- Start Generated Agent for WF-204 ---")
+    pyautogui.PAUSE = 1.0
+
+    steps = [
+        {
+                "id_employee": "EMP-0025",
+                "timestamp": "2026-02-23 10:15:32.911408+00:00",
+                "image_path": "https://fra1.digitaloceanspaces.com/mgscreenshot/chipchip_data/Natnael_EMP-0025/screenshot/Feb23/a6e1654f-436d-4ae3-8d7c-3ae4e45ec892.webp",
+                "app_name": "chrome.exe",
+                "window_title": "Google Meet - Meet - Review Planning on ChipChip360",
+                "event": "Custom_CLICK",
+                "url": "meet.google.com/jvf-hihx-opj?lfhs=2",
+                "date": "2026-02-23"
+        },
+        {
+                "id_employee": "EMP-0025",
+                "timestamp": "2026-02-23 10:16:10.936145+00:00",
+                "image_path": "https://fra1.digitaloceanspaces.com/mgscreenshot/chipchip_data/Natnael_EMP-0025/screenshot/Feb23/c01e33fd-87b8-4d05-abab-4eebc7cc95f5.webp",
+                "app_name": "chrome.exe",
+                "window_title": "Google Meet - Meet - Review Planning on ChipChip360",
+                "event": "Custom_CLICK",
+                "url": "meet.google.com/jvf-hihx-opj?lfhs=2",
+                "date": "2026-02-23"
+        },
+        {
+                "id_employee": "EMP-0025",
+                "timestamp": "2026-02-23 10:16:28.266263+00:00",
+                "image_path": "https://fra1.digitaloceanspaces.com/mgscreenshot/chipchip_data/Natnael_EMP-0025/screenshot/Feb23/135da6de-100d-4060-bb9b-8a83fa3338f6.webp",
+                "app_name": "brave.exe",
+                "window_title": "Google Calendar - February 2026 - Brave",
+                "event": "Custom_CLICK",
+                "url": "calendar.google.com/calendar/u/0/r/month",
+                "date": "2026-02-23"
+        },
+        {
+                "id_employee": "EMP-0025",
+                "timestamp": "2026-02-23 10:16:50.100672+00:00",
+                "image_path": "https://fra1.digitaloceanspaces.com/mgscreenshot/chipchip_data/Natnael_EMP-0025/screenshot/Feb23/5773e487-b68a-478b-866c-1cccfaeee33c.webp",
+                "app_name": "brave.exe",
+                "window_title": "Google Calendar - February 2026 - Brave",
+                "event": "Custom_CLICK",
+                "url": "calendar.google.com/calendar/u/0/r/month",
+                "date": "2026-02-23"
+        },
+        {
+                "id_employee": "EMP-0025",
+                "timestamp": "2026-02-23 10:16:57.188092+00:00",
+                "image_path": "https://fra1.digitaloceanspaces.com/mgscreenshot/chipchip_data/Natnael_EMP-0025/screenshot/Feb23/b07c96c1-67df-42c4-9b21-e8bce00373af.webp",
+                "app_name": "brave.exe",
+                "window_title": "Google Calendar - February 2026 - Brave",
+                "event": "Custom_CLICK",
+                "url": "calendar.google.com/calendar/u/0/r/month",
+                "date": "2026-02-23"
+        }
+]
+    
+    for i, step in enumerate(steps):
+        print(f"Step {i+1}: {step['event']} in {step['app_name']}")
+        
+        # 1. Navigation Logic
+        if step['url'] and str(step['url']) != 'None':
+            print(f"  > Opening URL: {step['url']}")
+            webbrowser.open(step['url'])
+            time.sleep(4) # Wait for page load
+            
+        # 2. Click Logic
+        if 'CLICK' in step['event'].upper():
+            # In a production environment, we would use:
+            # pos = pyautogui.locateOnScreen(step['image_path'])
+            # pyautogui.click(pos)
+            print(f"  > [Simulated] Clicking based on image: {step['image_path']}")
+            
+        # 3. Typing Logic
+        if 'TYPE' in step['event'].upper():
+            print(f"  > Typing automated sequence...")
+            pyautogui.write("Generated Input", interval=0.1)
+            
+        time.sleep(1)
+
+    print("--- Workflow Execution Complete ---")
+
+if __name__ == "__main__":
+    run_agent() 
+
+
+
