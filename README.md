@@ -27,7 +27,7 @@ The system is divided into two primary components:
 
 
 ##  Project Structure
-
+```text
 ├── ci/                     # GitHub Actions CI/CD configuration
 ├── data/                   # Source SQLite database (test_data.db)
 ├── extractor/              # Task 1: Workflow Discovery logic
@@ -41,7 +41,7 @@ The system is divided into two primary components:
 ├── system_designs.md       # Detailed architectural design document
 ├── workflow.json           # Intermediate discovery output (Task 1 -> Task 2)
 └── requirements.txt        # Project dependencies
-
+```
 
 ##  Installation & Setup Guide
 
